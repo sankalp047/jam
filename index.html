@@ -9,8 +9,8 @@
 
     :root {
       --safe-bottom: env(safe-area-inset-bottom, 0px);
-      --header-h: 64px;
-      --tab-h: 68px;
+      --header-h: 62px;
+      --tab-h: 66px;
     }
 
     body {
@@ -19,241 +19,175 @@
       color: #fff;
       min-height: 100vh;
       overflow-x: hidden;
-      transition: background 0.6s ease;
+      transition: background 0.5s ease;
     }
 
-    /* ── MEDLEY THEME VARS ── */
-    .t1 { --a1:#FF6B9D; --a2:#c2185b; --bg1:#1a0010; --bg2:#2a0022; }
-    .t2 { --a1:#b39ddb; --a2:#512da8; --bg1:#0d0020; --bg2:#120030; }
-    .t3 { --a1:#ff8c42; --a2:#e53935; --bg1:#1a0500; --bg2:#2a0000; }
-    .t4 { --a1:#ffd54f; --a2:#e65100; --bg1:#1a1000; --bg2:#2a1500; }
-    .t5 { --a1:#4dd0e1; --a2:#1565c0; --bg1:#000d1a; --bg2:#001030; }
-    .t6 { --a1:#ffd700; --a2:#ff6f00; --bg1:#1a1000; --bg2:#1a0500; }
+    /* ── THEME VARS ── */
+    .t1 { --a1:#FF6B9D; --a2:#c2185b; }
+    .t2 { --a1:#b39ddb; --a2:#7c4dff; }
+    .t3 { --a1:#ff8c42; --a2:#e53935; }
+    .t4 { --a1:#ffd54f; --a2:#e65100; }
+    .t5 { --a1:#4dd0e1; --a2:#1565c0; }
+    .t6 { --a1:#ffd700; --a2:#ff6f00; }
 
-    /* ── FLOATING BG NOTES ── */
-    #bgNotes {
-      position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden;
-    }
+    /* ── FLOATING NOTES ── */
+    #bgNotes { position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden; }
     .bn {
-      position: absolute; font-size: 22px; opacity: 0;
+      position:absolute; font-size:20px; opacity:0;
       animation: floatUp linear infinite;
     }
     @keyframes floatUp {
-      0%   { opacity: 0; transform: translateY(10vh) rotate(0deg); }
-      10%  { opacity: 0.12; }
-      90%  { opacity: 0.07; }
-      100% { opacity: 0; transform: translateY(-110vh) rotate(300deg); }
+      0%   { opacity:0; transform:translateY(5vh) rotate(0deg); }
+      10%  { opacity:0.1; }
+      90%  { opacity:0.06; }
+      100% { opacity:0; transform:translateY(-110vh) rotate(280deg); }
     }
 
     /* ── HEADER ── */
     .hdr {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-      height: var(--header-h);
-      display: flex; align-items: center; gap: 10px; padding: 0 18px;
-      background: rgba(0,0,0,0.75);
-      backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
-      border-bottom: 1px solid rgba(255,255,255,0.07);
+      position:fixed; top:0; left:0; right:0; z-index:200;
+      height:var(--header-h);
+      display:flex; align-items:center; gap:10px; padding:0 18px;
+      background:rgba(0,0,0,0.78);
+      backdrop-filter:blur(22px); -webkit-backdrop-filter:blur(22px);
+      border-bottom:1px solid rgba(255,255,255,0.07);
     }
-    .hdr-icon { font-size: 26px; animation: pulse 2.4s ease-in-out infinite; }
-    @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.15)} }
+    .hdr-icon { font-size:24px; animation:pulse 2.5s ease-in-out infinite; }
+    @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.14)} }
     .hdr-title {
-      font-size: 19px; font-weight: 800; letter-spacing: -0.3px;
-      background: linear-gradient(90deg,#FF6B9D,#b39ddb,#4dd0e1);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      font-size:18px; font-weight:800;
+      background:linear-gradient(90deg,#FF6B9D,#b39ddb,#4dd0e1);
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
     }
     .hdr-count {
-      margin-left: auto; font-size: 11px; font-weight: 600;
-      color: rgba(255,255,255,0.35); letter-spacing: 0.5px;
+      margin-left:auto; font-size:11px; font-weight:600;
+      color:rgba(255,255,255,0.3); letter-spacing:0.5px;
     }
 
     /* ── TAB BAR ── */
     .tabbar {
-      position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
-      display: flex; background: rgba(5,5,15,0.95);
-      backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
-      border-top: 1px solid rgba(255,255,255,0.08);
-      padding-bottom: var(--safe-bottom);
-      overflow-x: auto; scrollbar-width: none;
+      position:fixed; bottom:0; left:0; right:0; z-index:200;
+      display:flex;
+      background:rgba(5,5,15,0.96);
+      backdrop-filter:blur(22px); -webkit-backdrop-filter:blur(22px);
+      border-top:1px solid rgba(255,255,255,0.08);
+      padding-bottom:var(--safe-bottom);
+      overflow-x:auto; scrollbar-width:none;
     }
-    .tabbar::-webkit-scrollbar { display: none; }
+    .tabbar::-webkit-scrollbar { display:none; }
     .tb {
-      flex: 1; min-width: 54px; padding: 8px 2px 10px;
-      background: none; border: none; cursor: pointer;
-      display: flex; flex-direction: column; align-items: center; gap: 4px;
-      color: rgba(255,255,255,0.32); transition: color 0.25s;
-      position: relative;
+      flex:1; min-width:54px; padding:8px 2px 10px;
+      background:none; border:none; cursor:pointer;
+      display:flex; flex-direction:column; align-items:center; gap:4px;
+      color:rgba(255,255,255,0.3); transition:color 0.25s;
+      position:relative;
     }
-    .tb.on { color: #fff; }
+    .tb.on { color:#fff; }
     .tb.on::before {
-      content: '';
-      position: absolute; top: 0; left: 22%; right: 22%; height: 2.5px;
-      border-radius: 0 0 3px 3px;
-      background: var(--tab-glow, #fff);
-      box-shadow: 0 0 8px var(--tab-glow, #fff);
+      content:'';
+      position:absolute; top:0; left:22%; right:22%; height:2.5px;
+      border-radius:0 0 3px 3px;
+      background:var(--tab-glow,#fff);
+      box-shadow:0 0 10px var(--tab-glow,#fff);
     }
-    .tb-icon { font-size: 19px; line-height: 1; }
-    .tb-lbl  { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px; text-align: center; line-height: 1.25; }
+    .tb-icon { font-size:19px; line-height:1; }
+    .tb-lbl  { font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:0.4px; text-align:center; line-height:1.25; }
 
     /* ── SCROLL AREA ── */
     .pages {
-      padding-top: var(--header-h);
-      padding-bottom: calc(var(--tab-h) + var(--safe-bottom) + 12px);
-      min-height: 100vh;
+      padding-top:var(--header-h);
+      padding-bottom:calc(var(--tab-h) + var(--safe-bottom) + 16px);
+      min-height:100vh;
     }
 
     /* ── PAGE ── */
-    .pg {
-      display: none;
-      padding: 0 14px 24px;
-      animation: fadeIn 0.35s ease;
-    }
-    .pg.on { display: block; }
-    @keyframes fadeIn { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:none} }
+    .pg { display:none; padding:0 18px 28px; animation:fadeIn 0.35s ease; }
+    .pg.on { display:block; }
+    @keyframes fadeIn { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:none} }
 
     /* ── HERO ── */
-    .hero {
-      padding: 28px 0 18px;
-      text-align: center;
-      position: relative;
-    }
+    .hero { padding:26px 0 20px; text-align:center; }
     .hero-num {
-      font-size: 11px; font-weight: 700; letter-spacing: 4px;
-      text-transform: uppercase; color: var(--a1, #fff); opacity: 0.55;
-      margin-bottom: 8px;
+      font-size:11px; font-weight:700; letter-spacing:4px;
+      text-transform:uppercase; color:var(--a1,#fff); opacity:0.5; margin-bottom:8px;
     }
     .hero-title {
-      font-size: 32px; font-weight: 900; letter-spacing: -0.5px;
-      background: linear-gradient(135deg, var(--a1,#fff), var(--a2,#aaa));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-      margin-bottom: 6px;
+      font-size:30px; font-weight:900; letter-spacing:-0.5px;
+      background:linear-gradient(135deg,var(--a1,#fff),var(--a2,#aaa));
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+      margin-bottom:6px;
     }
-    .hero-sub { font-size: 13px; color: rgba(255,255,255,0.38); }
+    .hero-sub { font-size:13px; color:rgba(255,255,255,0.36); }
 
-    /* waveform decoration */
-    .wavebar-row {
-      display: flex; align-items: center; justify-content: center;
-      gap: 3px; height: 28px; margin: 14px 0 4px;
-    }
+    /* waveform */
+    .wavebar-row { display:flex; align-items:center; justify-content:center; gap:3px; height:26px; margin:14px 0 0; }
     .wb {
-      width: 3px; border-radius: 2px;
-      background: var(--a1, #fff);
-      opacity: 0.3;
-      animation: waveAnim 1.2s ease-in-out infinite;
+      width:3px; border-radius:2px;
+      background:var(--a1,#fff); opacity:0.28;
+      animation:waveAnim 1.2s ease-in-out infinite;
     }
-    @keyframes waveAnim {
-      0%,100%{transform:scaleY(1)} 50%{transform:scaleY(2.4)}
+    @keyframes waveAnim { 0%,100%{transform:scaleY(1)} 50%{transform:scaleY(2.5)} }
+
+    /* ── DIVIDER ── */
+    .divider {
+      display:flex; align-items:center; gap:10px;
+      margin:28px 0;
+    }
+    .divider::before, .divider::after {
+      content:''; flex:1; height:1px;
+      background:linear-gradient(90deg,transparent,var(--a1,#888),transparent);
+      opacity:0.3;
+    }
+    .divider span {
+      font-size:16px; opacity:0.5;
     }
 
-    /* ── SECTION LABEL ── */
-    .sec-lbl {
-      display: flex; align-items: center; gap: 8px;
-      padding: 8px 4px; margin: 4px 0;
-    }
-    .sec-lbl::before, .sec-lbl::after {
-      content: ''; flex: 1; height: 1px;
-      background: linear-gradient(90deg, transparent, var(--a1,#fff), transparent);
-      opacity: 0.25;
-    }
-    .sec-lbl span {
-      font-size: 10px; font-weight: 800; letter-spacing: 2px;
-      text-transform: uppercase; color: var(--a1,#fff); opacity: 0.7;
-      white-space: nowrap;
+    /* ── LYRICS BLOCK ── */
+    .lyrics-block {
+      font-size:15px;
+      line-height:2;
+      color:rgba(255,255,255,0.85);
+      white-space:pre-line;
+      font-family:'Georgia', serif;
+      letter-spacing:0.1px;
     }
 
-    /* ── INFO NOTE ── */
-    .info-note {
-      display: flex; align-items: flex-start; gap: 8px;
-      background: rgba(255,255,255,0.05); border-radius: 12px;
-      padding: 10px 14px; margin-bottom: 12px; font-size: 12px;
-      color: var(--a1, #ccc); border-left: 3px solid var(--a1,#555);
+    /* ── PERFORMANCE NOTES ── */
+    .perf-note {
+      display:inline-flex; align-items:center; gap:6px;
+      background:rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.1);
+      border-left:3px solid var(--a1,#888);
+      border-radius:10px;
+      padding:8px 14px;
+      font-size:12px; font-weight:600;
+      color:var(--a1,#ccc);
+      margin-bottom:20px;
     }
 
-    /* ── SONGS LIST ── */
-    .songs { display: flex; flex-direction: column; gap: 9px; }
-
-    /* ── SONG CARD ── */
-    .sc {
-      background: rgba(255,255,255,0.045);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 18px; overflow: hidden;
-      transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
-    }
-    .sc.open {
-      background: rgba(255,255,255,0.07);
-      border-color: var(--a1, #888);
-      box-shadow: 0 0 22px -6px var(--a1, transparent);
+    /* ── STOP TAG ── */
+    .stop-tag {
+      display:block; text-align:center;
+      background:rgba(255,50,50,0.12);
+      border:1px solid rgba(255,50,50,0.25);
+      border-radius:10px;
+      padding:10px;
+      font-size:12px; font-weight:800;
+      color:#ff7070; letter-spacing:2.5px;
+      margin:18px 0;
     }
 
-    .sc-hd {
-      display: flex; align-items: center; gap: 12px;
-      padding: 13px 14px; cursor: pointer; user-select: none;
-    }
-    .sc-hd:active { background: rgba(255,255,255,0.04); }
-
-    .sc-num {
-      width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0;
-      background: linear-gradient(135deg, var(--a1, #888), var(--a2, #444));
-      display: flex; align-items: center; justify-content: center;
-      font-size: 13px; font-weight: 800;
-      box-shadow: 0 2px 10px -2px var(--a1, transparent);
-    }
-
-    .sc-info { flex: 1; min-width: 0; }
-    .sc-name {
-      font-size: 15px; font-weight: 700; color: #f0f0f0;
-      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-      margin-bottom: 2px;
-    }
-    .sc-meta { font-size: 11.5px; color: var(--a1, #aaa); opacity: 0.8; }
-
-    .sc-arrow {
-      font-size: 16px; opacity: 0.45; transition: transform 0.3s, opacity 0.3s;
-      flex-shrink: 0;
-    }
-    .sc.open .sc-arrow { transform: rotate(180deg); opacity: 0.9; }
-
-    /* ── LYRICS BODY ── */
-    .sc-body {
-      display: none;
-      padding: 0 14px 16px;
-      border-top: 1px solid rgba(255,255,255,0.06);
-    }
-    .sc.open .sc-body { display: block; }
-
-    .lyrics {
-      font-size: 14.5px; line-height: 1.85; color: rgba(255,255,255,0.82);
-      white-space: pre-line; padding-top: 14px;
-      font-family: 'Georgia', serif;
-    }
-
-    .tag {
-      display: inline-flex; align-items: center; gap: 5px;
-      margin-top: 12px; font-size: 11px; font-weight: 700;
-      padding: 5px 12px; border-radius: 20px;
-    }
-    .tag-note {
-      background: rgba(255,255,255,0.07);
-      color: var(--a1, #ccc);
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-    .tag-stop {
-      background: rgba(255,50,50,0.14);
-      color: #ff7070;
-      border: 1px solid rgba(255,50,50,0.28);
-      letter-spacing: 1.5px;
-    }
-    .tag-beat {
-      background: rgba(255,200,50,0.1);
-      color: #ffd54f;
-      border: 1px solid rgba(255,200,50,0.2);
-    }
-
-    /* ── SWIPE HINT ── */
-    .swipe-hint {
-      position: fixed; bottom: calc(var(--tab-h) + var(--safe-bottom) + 10px);
-      right: 14px; z-index: 190;
-      font-size: 11px; color: rgba(255,255,255,0.22);
-      pointer-events: none;
+    /* ── BEAT CHANGE TAG ── */
+    .beat-tag {
+      display:block; text-align:center;
+      background:rgba(255,200,50,0.09);
+      border:1px solid rgba(255,200,50,0.18);
+      border-radius:10px;
+      padding:8px;
+      font-size:11px; font-weight:800;
+      color:#ffd54f; letter-spacing:2px;
+      margin:18px 0;
+      text-transform:uppercase;
     }
   </style>
 </head>
@@ -269,272 +203,144 @@
 
 <div class="pages">
 
-  <!-- ══════════════ MEDLEY 1 ══════════════ -->
+  <!-- ══════════════════════════════════════
+       MEDLEY 1 — Heart-to-Heart
+  ══════════════════════════════════════ -->
   <div class="pg t1 on" id="pg1">
     <div class="hero">
       <div class="hero-num">Medley 1</div>
       <div class="hero-title">Heart-to-Heart</div>
-      <div class="hero-sub">7 Songs · Romantic Classics</div>
+      <div class="hero-sub">Singer: Rimita · Apoorva · Mithu</div>
       <div class="wavebar-row" id="wb1"></div>
     </div>
-    <div class="songs">
 
-      <div class="sc" onclick="toggle(this)">
-        <div class="sc-hd">
-          <div class="sc-num">1</div>
-          <div class="sc-info">
-            <div class="sc-name">Bade Achche Lagte Hain</div>
-            <div class="sc-meta">♪ Singer: Rimita · Sholay theme intro</div>
-          </div>
-          <div class="sc-arrow">⌄</div>
-        </div>
-        <div class="sc-body">
-          <div class="lyrics">Hum tum kitane paas hai kitane.. duur hain chaand sitaare,
+    <div class="lyrics-block">Hum tum kitane paas hai kitane.. duur hain chaand sitaare,
 Sach poochho to mann ko jhoothe lagate hain yeh saare
-
 Hum tum kitane paas hai kitane.. duur hain chaand sitaare,
 Sach poochho to mann ko jhoothe lagate hain yeh saare
-
 Magar saccche lagate hai,
 Yeh Dharti yeh nadiyaa, yeh rainaa aur ?
 Aur tum mm …
-
 Bade Achche lagte hain yeh dharti,
 yeh nadiya, yeh raina… aur tum.</div>
-        </div>
-      </div>
 
-      <div class="sc" onclick="toggle(this)">
-        <div class="sc-hd">
-          <div class="sc-num">2</div>
-          <div class="sc-info">
-            <div class="sc-name">Abhi Na Jao Chhod Kar</div>
-            <div class="sc-meta">♪ Classic Romantic</div>
-          </div>
-          <div class="sc-arrow">⌄</div>
-        </div>
-        <div class="sc-body">
-          <div class="lyrics">Abhi Na Jao Chhod Kar, Ke Dil Abhi Bhara Nahi
+    <div class="divider"><span>✦</span></div>
+
+    <div class="lyrics-block">Abhi Na Jao Chhod Kar, Ke Dil Abhi Bhara Nahi
 Abhi Na Jao Chhod Kar, Ke Dil Abhi Bhara Nahi
-
-Abhi Toh Aayi Ho, Abhi Abhi Toh..
-Abhi Abhi Toh Aayi Ho, Bahaar Banke Chhayi Ho
-
+Abhi Toh Aayi Ho, Abhi Abhi Toh.. Abhi Abhi Toh Aayi Ho, Bahaar Banke Chhayi Ho
 Hava Zara Mahak Toh Le, Nazar Zara Bahak Toh Le
 Yeh Shaam Dhal Toh Le Zara, Yeh Shaam Dhal Toh Le Zara
 Yeh Dil Sambhal Toh Le Zara,
 Main Thodi Der Jee Toh Loon
 Nashe Ke Ghoont Pee Toh Loon, Nashe Ke Ghoont Pee Toh Loon
-
 Abhi Toh Kuch Kaha Nahi, Abhi Toh Kuch Suna Nahi
 Abhi Na Jao Chhod Kar, Ke Dil Abhi Bhara Nahi</div>
-        </div>
-      </div>
 
-      <div class="sc" onclick="toggle(this)">
-        <div class="sc-hd">
-          <div class="sc-num">3</div>
-          <div class="sc-info">
-            <div class="sc-name">Piyu Bole</div>
-            <div class="sc-meta">♪ Singer: Apoorva</div>
-          </div>
-          <div class="sc-arrow">⌄</div>
-        </div>
-        <div class="sc-body">
-          <div class="lyrics">Piyu bole, piya bole, kya yeh bole, janu na
+    <div class="divider"><span>✦</span></div>
+
+    <div class="lyrics-block">Piyu bole, piya bole, kya yeh bole, janu na
 Jiya dole haule-haule, kyun yeh dole jaanu na.
-
 Dil ki jo baatein hain, baatein jo dil ki hain,
 Dil hi mein rakhna, piya.
-
 Hmm, lab to na kholun main, kholun na lab to,
 par aankhon se sab keh diya.
-
 Piyu bole, piya bole, kya yeh bole jaanu na
 Jiya dole haule-haule, kyun yeh dole jaanu na
 Piyu bole, piya bole, kya yeh bole jaanu na
 Jiya dole haule-haule, kyun yeh dole jaanu na</div>
-        </div>
-      </div>
 
-      <div class="sc" onclick="toggle(this)">
-        <div class="sc-hd">
-          <div class="sc-num">4</div>
-          <div class="sc-info">
-            <div class="sc-name">Phoolon Ke Rang Se</div>
-            <div class="sc-meta">♪ Singer: Mithu</div>
-          </div>
-          <div class="sc-arrow">⌄</div>
-        </div>
-        <div class="sc-body">
-          <div class="lyrics">Phoolon ke rang se, dil ki kalam se tujhko likhi roz paati
+    <div class="divider"><span>✦</span></div>
+
+    <div class="lyrics-block">Phoolon ke rang se, dil ki kalam se tujhko likhi roz paati
 Kaise bataun kis-kis tarah se, pal-pal mujhe tu sataati
-
 Tere hi sapne lekar ke soya, teri hi yaadon mein jaaga
 Tere khayalon mein uljha raha yoon, jaise ki maala mein dhaaga
-
 Haan badal, bijli, chandan, pani jaisa apna pyar
 Lena hoga janam humein kayi-kayi baar
-
 Haan itna madir, itna madhur tera mera pyar
 Lena hoga janam hameh kayi-kayi baar</div>
-        </div>
-      </div>
 
-      <div class="sc" onclick="toggle(this)">
-        <div class="sc-hd">
-          <div class="sc-num">5</div>
-          <div class="sc-info">
-            <div class="sc-name">Ek Din Aap Yun</div>
-            <div class="sc-meta">♪ Hopeful & Sweet</div>
-          </div>
-          <div class="sc-arrow">⌄</div>
-        </div>
-        <div class="sc-body">
-          <div class="lyrics">Ek din aap yun humako mil jayenge
+    <div class="divider"><span>✦</span></div>
+
+    <div class="lyrics-block">Ek din aap yun humako mil jayenge
 Phool hi phool raaho mein khil jayenge
 Maine sochaa na thaa
-
 Ek din aap yun humako mil jayenge
 Phool hi phool raaho mein khil jayenge
 Maine sochaa na thaa
-
 Ek din zindagi itani hogi hasi
 Jhumegaa aasamaa gaaegi ye zami
 Ek din zindagi itani hogi hasi
 Jhumegaa aasamaa gaaegi ye zami
-
 Maine sochaa na thaa…</div>
-        </div>
-      </div>
 
-      <div class="sc" onclick="toggle(this)">
-        <div class="sc-hd">
-          <div class="sc-num">6</div>
-          <div class="sc-info">
-            <div class="sc-name">Kuch Na Kaho</div>
-            <div class="sc-meta">♪ Soft & Tender</div>
-          </div>
-          <div class="sc-arrow">⌄</div>
-        </div>
-        <div class="sc-body">
-          <div class="lyrics">Kuch na kaho, kuch bhi na kaho
+    <div class="divider"><span>✦</span></div>
+
+    <div class="lyrics-block">Kuch na kaho, kuch bhi na kaho
 Kuch na kaho, kuch bhi na kaho
-
 Kya kehna hai, kya sunna hai
 Mujhko pata hai, tumko pata hai
-
 Samay ka yeh pal tham sa gaya hai
 Aur is pal mein koi nahin hai
-
 Bas ek main hoon, bas ek tum ho
 Kuch na kaho, kuch bhi na kaho</div>
-        </div>
-      </div>
 
-      <div class="sc" onclick="toggle(this)">
-        <div class="sc-hd">
-          <div class="sc-num">7</div>
-          <div class="sc-info">
-            <div class="sc-name">Rongeela Re / Kaagaz Ke Do Pankh</div>
-            <div class="sc-meta">♪ Medley Finale</div>
-          </div>
-          <div class="sc-arrow">⌄</div>
-        </div>
-        <div class="sc-body">
-          <div class="lyrics">Rongeela re ✦ Rongeela re
+    <div class="divider"><span>✦</span></div>
+
+    <div class="lyrics-block">Rongeela re ✦ Rongeela re
 
 Kaagaz ke do pankh leke, Uda chala jaaye re
 Jahaan nahin jaana tha ye, Wahin chala haye re
-
 Umar ka yeh taana baana, Samajh na paaye re
 Zubaan pe jo moh maaya, Namak lagaye re
-
 Ke dekhe na bhale na jaane na daayere
 Disha hara kyamun boka.. Monta re
 
 Rongeela re ✦ Rongeela re</div>
-        </div>
-      </div>
-
-    </div>
   </div>
 
-  <!-- ══════════════ MEDLEY 2 ══════════════ -->
+
+  <!-- ══════════════════════════════════════
+       MEDLEY 2 — Love Anthems
+  ══════════════════════════════════════ -->
   <div class="pg t2" id="pg2">
     <div class="hero">
       <div class="hero-num">Medley 2</div>
       <div class="hero-title">Love Anthems</div>
-      <div class="hero-sub">4 Songs · Soulful Love</div>
+      <div class="hero-sub">Singer: Apoorva</div>
       <div class="wavebar-row" id="wb2"></div>
     </div>
-    <div class="songs">
 
-      <div class="sc" onclick="toggle(this)">
-        <div class="sc-hd">
-          <div class="sc-num">1</div>
-          <div class="sc-info">
-            <div class="sc-name">Ho Chandani Jab Tak Raat</div>
-            <div class="sc-meta">♪ Singer: Apoorva · Humnavaaz</div>
-          </div>
-          <div class="sc-arrow">⌄</div>
-        </div>
-        <div class="sc-body">
-          <div class="lyrics">Ho chandani jab tak raat, detaa hai har koi saath,
+    <div class="lyrics-block">Ho chandani jab tak raat, detaa hai har koi saath,
 Tum magar andheron mein, naa chhodna mera haath
-
 Ho chandani jab tak raat, detaa hai har koi saath,
 Tum magar andheron mein, naa chhodna mera haath
-
 Jab koi baat bigad jaye, jab koi mushkil pad jaye
 Tum denaa saath meraa, o, humnavaaz
-
 Naa koi hai, naa koi thaa, zindagi mein tumhaare sivaa
 Tum denaa saath meraa, o, humnavaaz</div>
-        </div>
-      </div>
 
-      <div class="sc" onclick="toggle(this)">
-        <div class="sc-hd">
-          <div class="sc-num">2</div>
-          <div class="sc-info">
-            <div class="sc-name">Hawayein</div>
-            <div class="sc-meta">♪ Tujhko Main Rakh Loon Wahan</div>
-          </div>
-          <div class="sc-arrow">⌄</div>
-        </div>
-        <div class="sc-body">
-          <div class="lyrics">Tujhko main rakh loon wahan
+    <div class="divider"><span>✦</span></div>
+
+    <div class="lyrics-block">Tujhko main rakh loon wahan
 Jahan pe kahin hai mera yaqeen
 Main jo tera na hua
 Kisi ka nahin, kisi ka nahin
-
 Le jaayein jaane kahan hawayein, hawayein
 Le jaayein tujhe kahan hawayein, hawayein?
 Begani hain yeh baaghi hawayein, hawayein
 Le jaayein mujhe kahan hawayein, hawayein?
-
 Le jaayein jaane kahan
 Na mujhko khabar, na tujhko pata
-
 Oh-oh-oh (hawayein, hawayein)
 Oh-oh-oh (hawayein, hawayein)
 Oh-oh-oh (hawayein, hawayein)
 Oh-oh-oh (hawayein, hawayein)</div>
-        </div>
-      </div>
 
-      <div class="sc" onclick="toggle(this)">
-        <div class="sc-hd">
-          <div class="sc-num">3</div>
-          <div class="sc-info">
-            <div class="sc-name">Musu Musu Hasi Deu</div>
-            <div class="sc-meta">♪ Smile & Joy</div>
-          </div>
-          <div class="sc-arrow">⌄</div>
-        </div>
-        <div class="sc-body">
-          <div class="lyrics">Musu musu hasi deu malai lai
+    <div class="divider"><span>✦</span></div>
+
+    <div class="lyrics-block">Musu musu hasi deu malai lai
 Musu musu hasi deu
 Zara muskura de, muskura de
 Zara muskura de e khushi
@@ -548,20 +354,10 @@ Musu musu hasi deu malai lai
 Musu musu hasi deu
 Zara muskura de, muskura de
 Zara muskura de e khushi</div>
-        </div>
-      </div>
 
-      <div class="sc" onclick="toggle(this)">
-        <div class="sc-hd">
-          <div class="sc-num">4</div>
-          <div class="sc-info">
-            <div class="sc-name">Chhu Kar Mere Mann Ko</div>
-            <div class="sc-meta">♪ Gentle & Sweet</div>
-          </div>
-          <div class="sc-arrow">⌄</div>
-        </div>
-        <div class="sc-body">
-          <div class="lyrics">Chhu kar mere mann ko,
+    <div class="divider"><span>✦</span></div>
+
+    <div class="lyrics-block">Chhu kar mere mann ko,
 Kiya tune kya ishara,
 Badla ye mausam,
 Lage pyara jag sara
@@ -570,34 +366,21 @@ Chhu kar mere mann ko,
 Kiya tune kya ishara,
 Badla ye mausam,
 Lage pyara jag sara</div>
-          <span class="tag tag-note">🎵 Repeated twice</span>
-        </div>
-      </div>
-
-    </div>
   </div>
 
-  <!-- ══════════════ MEDLEY 3 ══════════════ -->
+
+  <!-- ══════════════════════════════════════
+       MEDLEY 3 — Passion
+  ══════════════════════════════════════ -->
   <div class="pg t3" id="pg3">
     <div class="hero">
       <div class="hero-num">Medley 3</div>
       <div class="hero-title">Passion</div>
-      <div class="hero-sub">9 Songs · Intense & Emotional</div>
+      <div class="hero-sub">Singer: Apoorva</div>
       <div class="wavebar-row" id="wb3"></div>
     </div>
-    <div class="songs">
 
-      <div class="sc" onclick="toggle(this)">
-        <div class="sc-hd">
-          <div class="sc-num">1</div>
-          <div class="sc-info">
-            <div class="sc-name">Tum Hi Ho</div>
-            <div class="sc-meta">♪ Singer: Apoorva · Hum Tere Bin</div>
-          </div>
-          <div class="sc-arrow">⌄</div>
-        </div>
-        <div class="sc-body">
-          <div class="lyrics">Hum Tere Bin Ab Reh Nahi Sakte
+    <div class="lyrics-block">Hum Tere Bin Ab Reh Nahi Sakte
 Tere Bina Kya Wajood Mera
 Tujhse Juda Agar Ho Jayenge
 Toh Khud Se Hi Ho Jayenge Juda
@@ -606,484 +389,237 @@ Kyunki Tum Hi Ho.. Ab Tum Hi Ho
 Zindagi Ab Tum Hi Ho
 Chain Bhi Mera Dard Bhi
 Meri Aashiqui Ab Tum Hi Ho
-
 Tum hi ho.. Tum hi Ho…
 Mera ashiqui ab tum hi ho</div>
-        </div>
-      </div>
 
-      <div class="sc" onclick="toggle(this)">
-        <div class="sc-hd">
-          <div class="sc-num">2</div>
-          <div class="sc-info">
-            <div class="sc-name">Galliyan</div>
-            <div class="sc-meta">♪ Yahin Doobe Din Mere</div>
-          </div>
-          <div class="sc-arrow">⌄</div>
-        </div>
-        <div class="sc-body">
-          <div class="lyrics">Yahin doobe din mere
+    <div class="divider"><span>✦</span></div>
+
+    <div class="lyrics-block">Yahin doobe din mere
 Yahin hote hai savere
 Yahin marna aur jeena
 Yahin mandir aur madeena
-
 Teri galliyan, galliyan teri galliyan,
 Mujhko bhaave galliyan, teri galliyan
 Teri galliyan, galiyan teri galiyan,
 Yunhi tadpaave galliyan, teri galliyan</div>
-        </div>
-      </div>
 
-      <div class="sc" onclick="toggle(this)">
-        <div class="sc-hd">
-          <div class="sc-num">3</div>
-          <div class="sc-info">
-            <div class="sc-name">Manzile Ruswaa / Mujhko Iraade De</div>
-            <div class="sc-meta">♪ Bass on Cajon</div>
-          </div>
-          <div class="sc-arrow">⌄</div>
-        </div>
-        <div class="sc-body">
-          <div class="lyrics">Manzile.. Ruswaa hain..
+    <div class="divider"><span>✦</span></div>
+
+    <div class="lyrics-block">Manzile.. Ruswaa hain..
 Khoya hai raasta..
 Aaye le jaaye
 Itni si iltaja..
 Yeh meri zamanat hai..
 Tu meri amaanat hai..
-
 Haan.. Mujhko Iraade De Kasamein De Waade De
 Meri Duaaon Ke Ishaaron Ko Sahaare De
 Dil Ko Thikaane De Naye Bahaane De
 Khaabon Ki Baarishon Ko Mausam Ke Paimane De</div>
-          <span class="tag tag-stop">⏹ STOP</span>
-        </div>
-      </div>
 
-      <div class="sc" onclick="toggle(this)">
-        <div class="sc-hd">
-          <div class="sc-num">4</div>
-          <div class="sc-info">
-            <div class="sc-name">Sun Raha Hai</div>
-            <div class="sc-meta">♪ Apne Karam Ki Kar Adaayein</div>
-          </div>
-          <div class="sc-arrow">⌄</div>
-        </div>
-        <div class="sc-body">
-          <div class="lyrics">Apne karam ki kar adaayein..
+    <span class="stop-tag">⏹  STOP</span>
+
+    <div class="lyrics-block">Apne karam ki kar adaayein..
 Kar de idher bhi tu nigahein..
 Sunn raha hai na tu
 Ro raha hu main
 Sunn raha hai na tu
 Ro raha hu main</div>
-        </div>
-      </div>
 
-      <div class="sc" onclick="toggle(this)">
-        <div class="sc-hd">
-          <div class="sc-num">5</div>
-          <div class="sc-info">
-            <div class="sc-name">Saiyaara</div>
-            <div class="sc-meta">♪ Tu Paas Hai Mere Paas</div>
-          </div>
-          <div class="sc-arrow">⌄</div>
-        </div>
-        <div class="sc-body">
-          <div class="lyrics">Tu Paas Hai Mere Paas Hai Aise
+    <div class="divider"><span>✦</span></div>
+
+    <div class="lyrics-block">Tu Paas Hai Mere Paas Hai Aise
 Mera Koi Ehsaas Hai Jaise
 Tu Paas Hai Mere Paas Hai Aaise
 Mera Koi Ehsaas Hai Jaise
-
 Haye Main Mar Hi Jau, Jo Tujhko Na Pau
 Baaton Mein Teri Main Raate Bitaun
 Honthon Pe Lamha Lamha, Hai Naam Tera Haye
 Tujhko Hi Gaaun Main Tujhko Pukaru….
-
 Saiyaara Tu To Badla Nahi Hai
 Mausam Zara Sa Rutha Hua Hai
 Saiya Re Tu Toh Badla Nahi Hai
 Mausam Zara Sa Rootha Hua Hai</div>
-        </div>
-      </div>
 
-      <div class="sc" onclick="toggle(this)">
-        <div class="sc-hd">
-          <div class="sc-num">6</div>
-          <div class="sc-info">
-            <div class="sc-name">Woh Lamhe</div>
-            <div class="sc-meta">♪ Woh Baatein · Pause</div>
-          </div>
-          <div class="sc-arrow">⌄</div>
-        </div>
-        <div class="sc-body">
-          <div class="lyrics">Woh lamhe, woh baatein,
+    <div class="divider"><span>✦</span></div>
+
+    <div class="lyrics-block">Woh lamhe, woh baatein,
 Koi na jaane
 Thi kaisi raatein, Hooo, barsaatein
 Woh bheegi bheegi yaadein
 Woh bheegi bheegi yaadein</div>
-          <span class="tag tag-note">🎵 Pause…</span>
-        </div>
-      </div>
 
-      <div class="sc" onclick="toggle(this)">
-        <div class="sc-hd">
-          <div class="sc-num">7</div>
-          <div class="sc-info">
-            <div class="sc-name">Bhulaado Bhulaado</div>
-            <div class="sc-meta">♪ Letting Go</div>
-          </div>
-          <div class="sc-arrow">⌄</div>
-        </div>
-        <div class="sc-body">
-          <div class="lyrics">Bhulaado bhulaado wo baaten puraani
+    <div class="divider"><span>✦</span></div>
+
+    <div class="lyrics-block">Bhulaado bhulaado wo baaten puraani
 Jo dil ko jalaati raheen
 Wo yaaden tumhaari wo baaten tumhaari
 Jo ham ko sataati raheen</div>
-        </div>
-      </div>
 
-      <div class="sc" onclick="toggle(this)">
-        <div class="sc-hd">
-          <div class="sc-num">8</div>
-          <div class="sc-info">
-            <div class="sc-name">Phirta Rahoon Darbadar</div>
-            <div class="sc-meta">♪ Longing & Search</div>
-          </div>
-          <div class="sc-arrow">⌄</div>
-        </div>
-        <div class="sc-body">
-          <div class="lyrics">Phirta rahoon darbadar
+    <div class="divider"><span>✦</span></div>
+
+    <div class="lyrics-block">Phirta rahoon darbadar
 milta nahi tera nishaan
 hoke judaa kab main jiya
 tu hai kahaan main kahaan
-
 teri yaadon mein, khoya rehta hoon
 mujhko dasti hai tanhaaiyan.. mmmmm</div>
-        </div>
-      </div>
 
-      <div class="sc" onclick="toggle(this)">
-        <div class="sc-hd">
-          <div class="sc-num">9</div>
-          <div class="sc-info">
-            <div class="sc-name">Teri Meri Kahaani</div>
-            <div class="sc-meta">♪ Shaam-o-Subah Tu Mera</div>
-          </div>
-          <div class="sc-arrow">⌄</div>
-        </div>
-        <div class="sc-body">
-          <div class="lyrics">Shaam-o-subah tu mera
+    <div class="divider"><span>✦</span></div>
+
+    <div class="lyrics-block">Shaam-o-subah tu mera
 Tere bina kya mera
 Do jism jaan ek hai
 Na hona kabhi tu juda
-
 Teri meri kahaani
 Hai baarishon ka paani
 Banke jo ishq barse
 Teri meri kahaani
-
 Teri meri kahaani</div>
-        </div>
-      </div>
-
-    </div>
   </div>
 
-  <!-- ══════════════ MEDLEY 4 ══════════════ -->
+
+  <!-- ══════════════════════════════════════
+       MEDLEY 4 — Retro Mix
+  ══════════════════════════════════════ -->
   <div class="pg t4" id="pg4">
     <div class="hero">
       <div class="hero-num">Medley 4</div>
       <div class="hero-title">Retro Mix</div>
-      <div class="hero-sub">9 Songs · The Evergreens</div>
+      <div class="hero-sub">The Evergreens</div>
       <div class="wavebar-row" id="wb4"></div>
     </div>
-    <div class="songs">
 
-      <div class="sc" onclick="toggle(this)">
-        <div class="sc-hd">
-          <div class="sc-num">1</div>
-          <div class="sc-info">
-            <div class="sc-name">Baar Baar Dekho</div>
-            <div class="sc-meta">♪ Cajon Beat</div>
-          </div>
-          <div class="sc-arrow">⌄</div>
-        </div>
-        <div class="sc-body">
-          <div class="lyrics">Baar baar dekho hazar baar dekho
+    <div class="lyrics-block">Baar baar dekho hazar baar dekho
 Ke dekhne ki chiz hai, humara dilaruba
 Taali ho, taali ho, taali ho</div>
-          <span class="tag tag-note">🥁 Cajon opening · Repeated ×2</span>
-        </div>
-      </div>
 
-      <div class="sc" onclick="toggle(this)">
-        <div class="sc-hd">
-          <div class="sc-num">2</div>
-          <div class="sc-info">
-            <div class="sc-name">Haal Kaisa Hai Janaab Ka</div>
-            <div class="sc-meta">♪ Classic Retro</div>
-          </div>
-          <div class="sc-arrow">⌄</div>
-        </div>
-        <div class="sc-body">
-          <div class="lyrics">Haal kaisa hai janaab ka
+    <div class="divider"><span>✦</span></div>
+
+    <div class="lyrics-block">Haal kaisa hai janaab ka
 Kya khyaal hai apaka
 Tum to machal ge, o-o-o
 Yun hi fisal ge, a-a-a</div>
-          <span class="tag tag-note">🎵 Repeated ×2</span>
-        </div>
-      </div>
 
-      <div class="sc" onclick="toggle(this)">
-        <div class="sc-hd">
-          <div class="sc-num">3</div>
-          <div class="sc-info">
-            <div class="sc-name">Gore Gore O Banke Chore</div>
-            <div class="sc-meta">♪ Horse Beat</div>
-          </div>
-          <div class="sc-arrow">⌄</div>
-        </div>
-        <div class="sc-body">
-          <div class="lyrics">Gore gore o, banke chore
+    <div class="divider"><span>✦</span></div>
+
+    <div class="lyrics-block">Gore gore o, banke chore
 Kabhi meri gali aaya karo,
 Gori gori, o banki chori,
 Chahe roz bulaya karo</div>
-          <span class="tag tag-note">🐎 Horse beat · Repeated ×2</span>
-        </div>
-      </div>
 
-      <div class="sc" onclick="toggle(this)">
-        <div class="sc-hd">
-          <div class="sc-num">4</div>
-          <div class="sc-info">
-            <div class="sc-name">Jaane Kahaan Mera Jigar Gaya Ji</div>
-            <div class="sc-meta">♪ Playful Classic</div>
-          </div>
-          <div class="sc-arrow">⌄</div>
-        </div>
-        <div class="sc-body">
-          <div class="lyrics">Jaane kahaan mera jigar gaya ji
+    <div class="divider"><span>✦</span></div>
+
+    <div class="lyrics-block">Jaane kahaan mera jigar gaya ji
 Abhi abhi yahin tha kidhar gaya ji
 Kisi ki adaaon par mar gaya ji
 Badi badi ankhiyon se dar gaya ji</div>
-          <span class="tag tag-note">🎵 Repeated ×2</span>
-        </div>
-      </div>
 
-      <div class="sc" onclick="toggle(this)">
-        <div class="sc-hd">
-          <div class="sc-num">5</div>
-          <div class="sc-info">
-            <div class="sc-name">Dil Deke Dekho</div>
-            <div class="sc-meta">♪ Fun & Flirty</div>
-          </div>
-          <div class="sc-arrow">⌄</div>
-        </div>
-        <div class="sc-body">
-          <div class="lyrics">Dil deke dekho, dil deke dekho, dil deke dekho ji
+    <div class="divider"><span>✦</span></div>
+
+    <div class="lyrics-block">Dil deke dekho, dil deke dekho, dil deke dekho ji
 Dil lene waalon, dil denaa seekho ji
 Ho dil lene waalon, dil denaa seekho ji</div>
-          <span class="tag tag-note">🎵 Repeated ×2</span>
-        </div>
-      </div>
 
-      <div class="sec-lbl"><span>Beat Change</span></div>
+    <span class="beat-tag">🥁  Beat Change</span>
 
-      <div class="sc" onclick="toggle(this)">
-        <div class="sc-hd">
-          <div class="sc-num">6</div>
-          <div class="sc-info">
-            <div class="sc-name">Bahaki Bahaki + Haal Kaisa Reprise</div>
-            <div class="sc-meta">♪ Medley Transition</div>
-          </div>
-          <div class="sc-arrow">⌄</div>
-        </div>
-        <div class="sc-body">
-          <div class="lyrics">Bahaki, bahaki, chale hai pawan jo ude hai tera anchal
+    <div class="lyrics-block">Bahaki, bahaki, chale hai pawan jo ude hai tera anchal
 Chhodo chhodo, dekho dekho, gore gore, kaale kaale baadal
 Kabhi kuchh kahati hai, kabhi kuchh kahati hai
 Jara nazar ko sabhaalana.
-
 Haal Kaisa Hai Janab Ka,
 Kya Khayal Hai Aapka,
 Hum Toh Machal Gaye oooo
 Yun hi phisal gaye aaaa..
-
 Haal Kaisa Hai Janaab Ka..</div>
-        </div>
-      </div>
 
-      <div class="sc" onclick="toggle(this)">
-        <div class="sc-hd">
-          <div class="sc-num">7</div>
-          <div class="sc-info">
-            <div class="sc-name">Hai Apna Dil To Awaara</div>
-            <div class="sc-meta">♪ Classic Wanderlust</div>
-          </div>
-          <div class="sc-arrow">⌄</div>
-        </div>
-        <div class="sc-body">
-          <div class="lyrics">Hai apana dil to awaara,
+    <div class="divider"><span>✦</span></div>
+
+    <div class="lyrics-block">Hai apana dil to awaara,
 na jaane kisape aayega
 
 Ta ra ra….
 Hasinon ne bulaaya, gale se bhi lagaaya,
 Bahut samajhaaya, yahi na samajha,
 Bahut bhola hai bechaara, na jaane kis pe ayega
-
 Hai apana dil to awaara, na jaane kisape ayega</div>
-        </div>
-      </div>
 
-      <div class="sc" onclick="toggle(this)">
-        <div class="sc-hd">
-          <div class="sc-num">8</div>
-          <div class="sc-info">
-            <div class="sc-name">Yun To Hamane Laakh Hasin Dekhe</div>
-            <div class="sc-meta">♪ You Are Unique</div>
-          </div>
-          <div class="sc-arrow">⌄</div>
-        </div>
-        <div class="sc-body">
-          <div class="lyrics">Yun to hamane laakh hasin dekhe hai
+    <div class="divider"><span>✦</span></div>
+
+    <div class="lyrics-block">Yun to hamane laakh hasin dekhe hai
 Tumasaa nahi dekhaa
 Ho, tumasaa nahi dekhaa</div>
-          <span class="tag tag-note">🎵 Repeated ×2</span>
-        </div>
-      </div>
 
-      <div class="sc" onclick="toggle(this)">
-        <div class="sc-hd">
-          <div class="sc-num">9</div>
-          <div class="sc-info">
-            <div class="sc-name">Taarif Karun Kya Uski</div>
-            <div class="sc-meta">♪ Yeh Chandsa Roshan Chehra</div>
-          </div>
-          <div class="sc-arrow">⌄</div>
-        </div>
-        <div class="sc-body">
-          <div class="lyrics">Yeh Chand sa Roshan Chehra
+    <div class="divider"><span>✦</span></div>
+
+    <div class="lyrics-block">Yeh Chand sa Roshan Chehra
 Zulfon Ka Rang Sunehra
 Yeh Jheel Si Neeli Ankhen
 Koi Raaz Hai Inmein Gehra
-
 Taarif Karun Kya Uski
 Jisne Tumhe Banaya
 
 Taarif Karoon kya uski
 ..jisne tujhe banaya…….</div>
-        </div>
-      </div>
-
-    </div>
   </div>
 
-  <!-- ══════════════ MEDLEY 5 ══════════════ -->
+
+  <!-- ══════════════════════════════════════
+       MEDLEY 5 — Nostalgia
+  ══════════════════════════════════════ -->
   <div class="pg t5" id="pg5">
     <div class="hero">
       <div class="hero-num">Medley 5</div>
       <div class="hero-title">Nostalgia</div>
-      <div class="hero-sub">4 Songs · Memories & Youth</div>
+      <div class="hero-sub">Indy starts · Singers enter with the beat</div>
       <div class="wavebar-row" id="wb5"></div>
     </div>
-    <div class="songs">
 
-      <div class="info-note">🎸 Indy starts · Singers enter with the beat</div>
-
-      <div class="sc" onclick="toggle(this)">
-        <div class="sc-hd">
-          <div class="sc-num">1</div>
-          <div class="sc-info">
-            <div class="sc-name">Saari Umra Hum / Give Me Some Sunshine</div>
-            <div class="sc-meta">♪ Medley Opener</div>
-          </div>
-          <div class="sc-arrow">⌄</div>
-        </div>
-        <div class="sc-body">
-          <div class="lyrics">Saari Umra Hum, Mar-Mar Ke Jee Liye
+    <div class="lyrics-block">Saari Umra Hum, Mar-Mar Ke Jee Liye
 Ek Pal To Ab Humein, Jeene Do, Jeene Do
-
 Saari Umr Hum, Mar-Mar Ke Jee Liye
 Ek Pal To Ab Humein, Jeene Do, Jeene Do
-
 Nara Na Na Nara Nana…
-
 Give Me Some Sunshine
 Give Me Some Rain
 Give Me Another Chance
 I Wanna Grow Up Once Again</div>
-        </div>
-      </div>
 
-      <div class="sc" onclick="toggle(this)">
-        <div class="sc-hd">
-          <div class="sc-num">2</div>
-          <div class="sc-info">
-            <div class="sc-name">Purani Jeans</div>
-            <div class="sc-meta">♪ No Break · College Days</div>
-          </div>
-          <div class="sc-arrow">⌄</div>
-        </div>
-        <div class="sc-body">
-          <div class="lyrics">Purani jeans aur guitar, Mohalle ki woh chhat
+    <div class="divider"><span>✦</span></div>
+
+    <div class="lyrics-block">Purani jeans aur guitar, Mohalle ki woh chhat
 Aur mere yaar, Woh raaton ko jaagna
 Subah ghar jaana, Kood ke deewar
-
 Woh cigaretee peena, Gali mein jaake
 Woh karna daanton ko, Ghadi ghadi saaf
 Pahunchna college, Hamesha late
-
 Woh kehna sir ka, Get out from the class
 Woh bahar jaake, Hamesha kehna
 Yahan ka system, Hi hai kharaab
-
 Woh jaake canteen mein, Table bajaake
 Woh gaane gaana, Yaaron ke saath
-
 Bas Yaadein, Yaadein, Yaadein reh jaati hain
 Kuchh chhoti, chhoti, Baatein reh jaati hain
 Bas yaadein...</div>
-        </div>
-      </div>
 
-      <div class="sc" onclick="toggle(this)">
-        <div class="sc-hd">
-          <div class="sc-num">3</div>
-          <div class="sc-info">
-            <div class="sc-name">Papa Kehte Hain</div>
-            <div class="sc-meta">♪ No Break · Dreams & Destiny</div>
-          </div>
-          <div class="sc-arrow">⌄</div>
-        </div>
-        <div class="sc-body">
-          <div class="lyrics">Papa kehte hain bada naam karega
+    <div class="divider"><span>✦</span></div>
+
+    <div class="lyrics-block">Papa kehte hain bada naam karega
 Beta hamaara aisa kaam karega
 Magar yeh to koi na jaane
 Ke meri manzil hai kahan
 
 Mera to sapna hai ek chehra
 Dekhe jo usko jhoome bahaar
-
 Gaalon mein khilti kaliyon ka mausam
 Aankhon mein jaadu, honton mein pyaar
-
 Banda yeh khoobsurat kaam karega
 Dil ki duniya mein apna naam karega
 Meri nazar se dekho to yaaron
 Ke meri manzil hai kahan</div>
-        </div>
-      </div>
 
-      <div class="sc" onclick="toggle(this)">
-        <div class="sc-hd">
-          <div class="sc-num">4</div>
-          <div class="sc-info">
-            <div class="sc-name">Yeh Dosti Hum Nahi Todenge</div>
-            <div class="sc-meta">♪ Friendship Anthem · Grand Finale</div>
-          </div>
-          <div class="sc-arrow">⌄</div>
-        </div>
-        <div class="sc-body">
-          <div class="lyrics">Yeh dosti hum nahi todenge
+    <div class="divider"><span>✦</span></div>
+
+    <div class="lyrics-block">Yeh dosti hum nahi todenge
 Hum Nahin Todenge
 Todenge Dum Magar
 Tera saath Na Chhodenge
@@ -1092,216 +628,114 @@ Yeh dosti hum nahi todenge
 Hum Nahin Todenge
 Todenge Dum Magar
 Tera saath Na Chhodenge</div>
-        </div>
-      </div>
-
-    </div>
   </div>
 
-  <!-- ══════════════ MEDLEY 6 ══════════════ -->
+
+  <!-- ══════════════════════════════════════
+       MEDLEY 6 — Asha Bhosle Tribute
+  ══════════════════════════════════════ -->
   <div class="pg t6" id="pg6">
     <div class="hero">
       <div class="hero-num">Medley 6</div>
       <div class="hero-title">Asha Bhosle Tribute</div>
-      <div class="hero-sub">9 Songs · The Legend</div>
+      <div class="hero-sub">Indraneel plays · Sups enters</div>
       <div class="wavebar-row" id="wb6"></div>
     </div>
-    <div class="songs">
 
-      <div class="info-note">🎹 Indraneel plays · Sups enters</div>
-
-      <div class="sc" onclick="toggle(this)">
-        <div class="sc-hd">
-          <div class="sc-num">1</div>
-          <div class="sc-info">
-            <div class="sc-name">Roz Roz Aankhon Tale</div>
-            <div class="sc-meta">♪ Tribute Opener</div>
-          </div>
-          <div class="sc-arrow">⌄</div>
-        </div>
-        <div class="sc-body">
-          <div class="lyrics">Roz roz aankhon tale
+    <div class="lyrics-block">Roz roz aankhon tale
 Ek hi sapna chale..
 Raat bhar kaajal jale..
 Aankh mein jis tarah, khwab ka diya jale……
-
 Ho roz roz aankhon tale..
 Ek hi sapna chale..
 Raat bhar kaajal jale..
 Aankh mein jis tarah, khwab ka diya jale
-
 Ho roz roz, aankhon tale..</div>
-        </div>
-      </div>
 
-      <div class="sc" onclick="toggle(this)">
-        <div class="sc-hd">
-          <div class="sc-num">2</div>
-          <div class="sc-info">
-            <div class="sc-name">Chura Liya</div>
-            <div class="sc-meta">♪ You Stole My Heart</div>
-          </div>
-          <div class="sc-arrow">⌄</div>
-        </div>
-        <div class="sc-body">
-          <div class="lyrics">Chura liya…..
+    <div class="divider"><span>✦</span></div>
+
+    <div class="lyrics-block">Chura liya…..
 Chura liya hai tumne jo dil ko
 Nazar nahi churana sanam
-
 Badal ke meri tum zindagani
 Kahin badal na jaana sanam
-
 Ho le liya dil o… Haaye mera dil
 Haye dil lekar mujhko na behlana
-
 Chura liya hai tumne jo dil ko
 Nazar nahi churana sanam</div>
-        </div>
-      </div>
 
-      <div class="sc" onclick="toggle(this)">
-        <div class="sc-hd">
-          <div class="sc-num">3</div>
-          <div class="sc-info">
-            <div class="sc-name">Keh Dun Tumhe Ya Chup Rahun</div>
-            <div class="sc-meta">♪ The Unspoken Heart</div>
-          </div>
-          <div class="sc-arrow">⌄</div>
-        </div>
-        <div class="sc-body">
-          <div class="lyrics">Keh dun tumhe ya chup rahun,
+    <div class="divider"><span>✦</span></div>
+
+    <div class="lyrics-block">Keh dun tumhe ya chup rahun,
+dil men mere aaj kya hai
+Jo bolo to jaanu, guru tumako maanu
+Chalo ye bhi waada hai
+
+Keh dun tumhe ya chup rahun,
 dil men mere aaj kya hai
 Jo bolo to jaanu, guru tumako maanu
 Chalo ye bhi waada hai</div>
-          <span class="tag tag-note">🎵 Repeated ×2</span>
-        </div>
-      </div>
 
-      <div class="sc" onclick="toggle(this)">
-        <div class="sc-hd">
-          <div class="sc-num">4</div>
-          <div class="sc-info">
-            <div class="sc-name">Jaan-E-Jaan Dhundhata Fir Raha</div>
-            <div class="sc-meta">♪ Searching & Longing</div>
-          </div>
-          <div class="sc-arrow">⌄</div>
-        </div>
-        <div class="sc-body">
-          <div class="lyrics">Jaan-e-jaan dhundhata fir rahi
+    <div class="divider"><span>✦</span></div>
+
+    <div class="lyrics-block">Jaan-e-jaan dhundhata fir rahi
+Hun tumhe raat din,
+main yahaan se wahaan
+
+Jaan-e-jaan dhundhata fir rahi
 Hun tumhe raat din,
 main yahaan se wahaan
 
 Mujh ko awaaj do,
 chhup gaye ho sanam
 Tum kahaan, main yahaan</div>
-          <span class="tag tag-note">🎵 Repeated ×2</span>
-        </div>
-      </div>
 
-      <div class="sc" onclick="toggle(this)">
-        <div class="sc-hd">
-          <div class="sc-num">5</div>
-          <div class="sc-info">
-            <div class="sc-name">O Mere Sona Re</div>
-            <div class="sc-meta">♪ My Golden One</div>
-          </div>
-          <div class="sc-arrow">⌄</div>
-        </div>
-        <div class="sc-body">
-          <div class="lyrics">O mere sona re, sona re, sona re
+    <div class="divider"><span>✦</span></div>
+
+    <div class="lyrics-block">O mere sona re, sona re, sona re
 De dungi jaan juda mat hona re
-
 Maine tujhe zara der mein jaana
 Hua kusur khafa mat hona re
-
 O mere sona re, sona re, sona</div>
-        </div>
-      </div>
 
-      <div class="sc" onclick="toggle(this)">
-        <div class="sc-hd">
-          <div class="sc-num">6</div>
-          <div class="sc-info">
-            <div class="sc-name">Ye Ladka Haaye Allah</div>
-            <div class="sc-meta">♪ Playful & Flirtatious</div>
-          </div>
-          <div class="sc-arrow">⌄</div>
-        </div>
-        <div class="sc-body">
-          <div class="lyrics">Ye ladka haaye allah kaisa hai diwaana
+    <div class="divider"><span>✦</span></div>
+
+    <div class="lyrics-block">Ye ladka haaye allah kaisa hai diwaana
 Kitana mushkil hai tauba isko samjhaana
-
 Ke dhire-dhire dil bekaraar hota hai
 Hote, hote hote, pyaar hota hai
-
 Ye ladka haaye allah kaisa hai diwaana</div>
-        </div>
-      </div>
 
-      <div class="sc" onclick="toggle(this)">
-        <div class="sc-hd">
-          <div class="sc-num">7</div>
-          <div class="sc-info">
-            <div class="sc-name">Duniya Mein</div>
-            <div class="sc-meta">♪ Aha Ha Ha Ha</div>
-          </div>
-          <div class="sc-arrow">⌄</div>
-        </div>
-        <div class="sc-body">
-          <div class="lyrics">Duniya mein… Aha Ha Ha Ha
+    <div class="divider"><span>✦</span></div>
+
+    <div class="lyrics-block">Duniya mein… Aha Ha Ha Ha
 Logon ko.. Aha Ha Ha Ha
 Dhokha kabhi ho jata hai.. Hooo
-
 Aankhon hi… Aha Ha Ha Ha
 Aankhon mein… Aha Ha Ha Ha
 Yaro ka dil kho jata hai</div>
-        </div>
-      </div>
 
-      <div class="sc" onclick="toggle(this)">
-        <div class="sc-hd">
-          <div class="sc-num">8</div>
-          <div class="sc-info">
-            <div class="sc-name">Piya Tu Ab To Aaja</div>
-            <div class="sc-meta">♪ Pyase Pyase · Monika</div>
-          </div>
-          <div class="sc-arrow">⌄</div>
-        </div>
-        <div class="sc-body">
-          <div class="lyrics">Pyase-pyase in mere labon ke liye
+    <div class="divider"><span>✦</span></div>
+
+    <div class="lyrics-block">Pyase-pyase in mere labon ke liye
 Tere hothon ne hazaar waade kiye
 Bhoolane waale koi jiye to kaise jiye?
-
 Arre haan! arre haan! arre haan! Haan
 La-la-la la-la-la-la-la-la-la-la-la-la-la-la
-
 Piya tu ab to aaja
 Shola sa mann dahake aake bujha ja,
 Tan ki jwaala thandi ho jaaye
 Aise gale laga jaa…aa
-
 Monika, o my daarling</div>
-        </div>
-      </div>
 
-      <div class="sc" onclick="toggle(this)">
-        <div class="sc-hd">
-          <div class="sc-num">9</div>
-          <div class="sc-info">
-            <div class="sc-name">Dum Maaro Dum</div>
-            <div class="sc-meta">♪ Hare Krishna Hare Ram · Grand Finale</div>
-          </div>
-          <div class="sc-arrow">⌄</div>
-        </div>
-        <div class="sc-body">
-          <div class="lyrics">Duniya ne hamako diya kya ?
+    <div class="divider"><span>✦</span></div>
+
+    <div class="lyrics-block">Duniya ne hamako diya kya ?
 Duniya se hamane liya kya ?
 Ham sab ki parwa kare kyon ?
 Sabane hamaara kiya kya ?
-
 Dum maro dumm…
 Mit jaaye gumm..
-
 Dum maaro dumm
 Mit jaae ghumm
 Bolo subah shaam hare krishna, hare ram
@@ -1310,11 +744,6 @@ Dum maaro dumm
 Mit jaae ghumm
 Bolo subah shaam
 Hare Krishna, Hare Ram</div>
-          <span class="tag tag-note">🎵 Signature music · Grand Finale</span>
-        </div>
-      </div>
-
-    </div>
   </div>
 
 </div><!-- /pages -->
@@ -1370,35 +799,23 @@ Hare Krishna, Hare Ram</div>
     window.scrollTo({top:0, behavior:'smooth'});
   }
 
-  function toggle(card) {
-    const wasOpen = card.classList.contains('open');
-    // close all in this page
-    card.closest('.songs').querySelectorAll('.sc.open').forEach(c => c.classList.remove('open'));
-    if (!wasOpen) {
-      card.classList.add('open');
-      setTimeout(() => card.scrollIntoView({behavior:'smooth', block:'nearest'}), 150);
-    }
-  }
-
-  // Init body bg
+  // Init background
   document.body.style.background = bgs[1];
 
   // Build waveform bars
   for (let i = 1; i <= 6; i++) {
-    const row = document.getElementById('wb' + i);
-    const counts = [14, 10, 18, 14, 10, 18];
-    for (let j = 0; j < counts[i-1]; j++) {
+    const row = document.getElementById('wb'+i);
+    for (let j = 0; j < 16; j++) {
       const b = document.createElement('div');
       b.className = 'wb';
-      const h = 6 + Math.random() * 18;
-      b.style.height = h + 'px';
-      b.style.animationDelay = (j * 0.08) + 's';
-      b.style.animationDuration = (0.9 + Math.random() * 0.6) + 's';
+      b.style.height = (6 + Math.random() * 18) + 'px';
+      b.style.animationDelay = (j * 0.07) + 's';
+      b.style.animationDuration = (0.85 + Math.random() * 0.65) + 's';
       row.appendChild(b);
     }
   }
 
-  // Floating background music notes
+  // Floating background notes
   const noteChars = ['♩','♪','♫','♬','🎵','🎶'];
   const bgN = document.getElementById('bgNotes');
   for (let i = 0; i < 14; i++) {
@@ -1412,12 +829,9 @@ Hare Krishna, Hare Ram</div>
     bgN.appendChild(el);
   }
 
-  // Swipe gesture for tab switching
+  // Swipe to change tab
   let tx = 0, ty = 0;
-  document.addEventListener('touchstart', e => {
-    tx = e.touches[0].clientX;
-    ty = e.touches[0].clientY;
-  }, {passive:true});
+  document.addEventListener('touchstart', e => { tx = e.touches[0].clientX; ty = e.touches[0].clientY; }, {passive:true});
   document.addEventListener('touchend', e => {
     const dx = e.changedTouches[0].clientX - tx;
     const dy = Math.abs(e.changedTouches[0].clientY - ty);
